@@ -57,9 +57,14 @@ while True:
 		cv2.putText(frm, pred, (50,50),cv2.FONT_ITALIC, 1, (255,0,0),2)
 
 		
-	drawing.draw_landmarks(frm, res.face_landmarks, holistic.FACEMESH_CONTOURS)
-	drawing.draw_landmarks(frm, res.left_hand_landmarks, hands.HAND_CONNECTIONS)
-	drawing.draw_landmarks(frm, res.right_hand_landmarks, hands.HAND_CONNECTIONS)
+	drawing.draw_landmarks(
+        frm, 
+        res.face_landmarks, 
+        holistic.FACEMESH_CONTOURS,
+        landmark_drawing_spec=drawing.DrawingSpec(color=(0, 0, 255), circle_radius=1),
+        connection_drawing_spec=drawing.DrawingSpec(color=(255, 0, 0), thickness=1, circle_radius=1),
+	)
+    
 
 	cv2.imshow("window", frm)
 
